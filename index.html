@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			html, body {
+				width: 95%;
+				min-height: 100%;
+			}
+
+			div {
+				height: 80px;
+				width: 80px;
+				float: left;
+				background-color: green;
+				border-radius: 2px;
+				margin: 2px;
+			}
+		</style>
+
+	</head>
+	<body>
+
+		<!-- BODY -->
+
+	</body>
+
+	<script type="text/javascript" src="3rd/jquery-1.8.3.js"></script>
+	<script type="text/javascript">
+
+		'use strict'
+
+		var SECOND = 1000,
+			timer = function() {
+				var timer = {};
+
+				timer.add = function (node) {
+					$('body').append(node);
+				}
+
+				timer.remove = function() {
+					var divs = $('body').find('div'),
+						node = $(divs[divs.length-1]);
+					node.fadeOut(400, function() {node.remove(); } );
+				}
+
+				timer.node = function (i) {
+					return $('<div>')
+							.attr('id', i);
+				}
+
+				timer.init = function() {
+					//add nodes
+					for (var i = 140; i >= 0; i--) {
+						timer.add(
+							timer.node(i)
+						);
+					};
+
+					//remove nodes
+					setInterval(function() {
+					      timer.remove();
+					}, SECOND/2);
+				};
+
+				return timer;
+			}
+
+		//onready
+		$(document).ready(function() {
+			timer().init();
+		});
+
+	</script>
+</html>
