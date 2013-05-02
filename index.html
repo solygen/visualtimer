@@ -44,18 +44,14 @@
 
         var SECOND = 1000,
 
-
-
             timer = function() {
-                var timer = {}, running, parent;
+                var self = {}, running, parent;
 
                 setInterval(function() {
-                    console.log(timer.isRunning());
-                    if (timer.isRunning())
+                    console.log(self.isRunning());
+                    if (self.isRunning())
                         remove()
                 }, SECOND/2)
-
-
 
                 add = function (node) {
                     parent.append(node);
@@ -72,7 +68,7 @@
                             .attr('id', i);
                 }
 
-                timer.init = function(node) {
+                self.init = function(node) {
                     parent = node || $('body');
                     //add nodes
                     for (var i = 40; i >= 0; i--) {
@@ -83,32 +79,31 @@
                     return this;
                 }
 
-                timer.isRunning = function() {
+                self.isRunning = function() {
                     return running;
                 }
 
-                timer.start = function() {
-                    console.warn('start')
+                self.start = function() {
                     running = true;
+                    return this;
                 }
 
-                timer.pause = function() {
-                    console.warn('pause')
+                self.pause = function() {
                     running = false;
+                    return this;
                 }
 
-                timer.reset = function() {
-                    timer.init(parent);
+                self.reset = function() {
+                    return self.init(parent);
                 }
 
-                return timer;
+                return self;
             }
 
         //onready
         $(document).ready(function() {
-            t = timer().init();
-            t.start();
-            t.pause();
+            t = timer().init().start();
+            //t.pause();
         });
 
     </script>
