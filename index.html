@@ -1,76 +1,115 @@
 <!DOCTYPE html>
 
-<html>
-	<head>
-		<meta charset="utf-8">
-		<style>
-			html, body {
-				width: 95%;
-				min-height: 100%;
-			}
+<html lang="en">
+    <head>
+        <title>VisualTimer</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <style>
+            html, body, div {
+                width: 95%;
+                min-height: 100%;
+            }
 
-			div {
-				height: 80px;
-				width: 80px;
-				float: left;
-				background-color: green;
-				border-radius: 2px;
-				margin: 2px;
-			}
-		</style>
+            div {
+                height: 80px;
+                width: 80px;
+                float: left;
+                background-color: green;
+                border-radius: 2px;
+                margin: 2px;
+            }
+        </style>
 
-	</head>
-	<body>
+        <!-- Fav and touch icons -->
+        <link rel="shortcut icon" href="bootstrap/ico/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+    </head>
 
-		<!-- BODY -->
+    <body>
+        <!-- BODY -->
+        <!-- <div id="test" style="border: 2px solid red"></div> -->
+    </body>
 
-	</body>
+    <script type="text/javascript" src="3rd/jquery-1.8.3.js"></script>
+    <script type="text/javascript">
+        var t;
 
-	<script type="text/javascript" src="3rd/jquery-1.8.3.js"></script>
-	<script type="text/javascript">
+        'use strict'
 
-		'use strict'
+        var SECOND = 1000,
 
-		var SECOND = 1000,
-			timer = function() {
-				var timer = {};
 
-				timer.add = function (node) {
-					$('body').append(node);
-				}
 
-				timer.remove = function() {
-					var divs = $('body').find('div'),
-						node = $(divs[divs.length-1]);
-					node.fadeOut(400, function() {node.remove(); } );
-				}
+            timer = function() {
+                var timer = {}, running, parent;
 
-				timer.node = function (i) {
-					return $('<div>')
-							.attr('id', i);
-				}
+                setInterval(function() {
+                    console.log(timer.isRunning());
+                    if (timer.isRunning())
+                        remove()
+                }, SECOND/2)
 
-				timer.init = function() {
-					//add nodes
-					for (var i = 140; i >= 0; i--) {
-						timer.add(
-							timer.node(i)
-						);
-					};
 
-					//remove nodes
-					setInterval(function() {
-					      timer.remove();
-					}, SECOND/2);
-				};
 
-				return timer;
-			}
+                add = function (node) {
+                    parent.append(node);
+                }
 
-		//onready
-		$(document).ready(function() {
-			timer().init();
-		});
+                remove = function() {
+                    var divs = $('body').find('div'),
+                        node = $(divs[divs.length-1]);
+                    node.fadeOut(400, function() {node.remove(); } );
+                }
 
-	</script>
+                dot = function (i) {
+                    return $('<div>')
+                            .attr('id', i);
+                }
+
+                timer.init = function(node) {
+                    parent = node || $('body');
+                    //add nodes
+                    for (var i = 40; i >= 0; i--) {
+                        add(
+                            dot(i)
+                        );
+                    };
+                    return this;
+                }
+
+                timer.isRunning = function() {
+                    return running;
+                }
+
+                timer.start = function() {
+                    console.warn('start')
+                    running = true;
+                }
+
+                timer.pause = function() {
+                    console.warn('pause')
+                    running = false;
+                }
+
+                timer.reset = function() {
+                    timer.init(parent);
+                }
+
+                return timer;
+            }
+
+        //onready
+        $(document).ready(function() {
+            t = timer().init();
+            t.start();
+            t.pause();
+        });
+
+    </script>
 </html>
