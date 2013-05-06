@@ -3,6 +3,17 @@ module.exports = function(grunt) {
     // Initializes the Grunt tasks with the following settings
     grunt.initConfig({
 
+        //export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
+        jsdoc : {
+            dist : {
+                src: ['jq-vt.js'],
+                options: {
+                    destination: 'doc'
+                }
+            }
+        },
+
+
         // A list of files, which will be syntax-checked by JSHint
         jshint: {
             files: ['Gruntfile.js', 'jq-vt.js'],
@@ -60,6 +71,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-jsdoc');
 
 
     // This is the default task being executed if Grunt
