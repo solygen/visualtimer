@@ -1,22 +1,13 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+
+    'use strict';
 
     // Initializes the Grunt tasks with the following settings
     grunt.initConfig({
 
-        //export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home
-        jsdoc : {
-            dist : {
-                src: ['jq-vt.js'],
-                options: {
-                    destination: 'doc'
-                }
-            }
-        },
-
-
         // A list of files, which will be syntax-checked by JSHint
         jshint: {
-            files: ['Gruntfile.js', 'jq-vt.js'],
+            files: ['lib/*.js'],
             //https://github.com/gruntjs/grunt-contrib-jshint/blob/master/docs/jshint-examples.md
             options: {
                 bitwise: false,
@@ -46,8 +37,8 @@ module.exports = function(grunt) {
         // Files to be concatenated (source and destination files)
         concat: {
             js: {
-                src: ['jq-vt.js'],
-                dest: 'jq-vt-conc.js'
+                src: ['lib/j*.js'],
+                dest: 'jq-visualtimer.min.js'
             }
         },
 
@@ -55,13 +46,8 @@ module.exports = function(grunt) {
         uglify: {
             dist: {
                 src: ['<%= concat.js.dest %>'],
-                dest: 'jq-vt-conc.min.js'
+                dest: 'jq-visualtimer.min.js'
             }
-        },
-
-        watch: {
-            files: '<%= jshint.files %>',
-            tasks: 'jshint'
         }
 
     });
@@ -70,9 +56,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-jsdoc');
-
 
     // This is the default task being executed if Grunt
     // is called without any further parameter.

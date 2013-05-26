@@ -1,12 +1,10 @@
 {
-    "name": "my-project-name",
+    "name": "jquery-visualtimer",
     "version": "0.1.0",
     "devDependencies": {
         "grunt": "~0.4",
         "grunt-contrib-jshint": "~0.1",
         "grunt-contrib-concat": "~0.1",
-        "grunt-contrib-uglify": "~0.1",
-        "grunt-contrib-watch": "~0.1",
-        "grunt-jsdoc":"~0.3"
+        "grunt-contrib-uglify": "~0.1"
     }
 }
