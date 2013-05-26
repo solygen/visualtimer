@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 
         // A list of files, which will be syntax-checked by JSHint
         jshint: {
-            files: ['lib/*.js'],
+            files: ['lib/jq-*.js'],
             //https://github.com/gruntjs/grunt-contrib-jshint/blob/master/docs/jshint-examples.md
             options: {
                 bitwise: false,
