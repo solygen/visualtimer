@@ -7,7 +7,7 @@ module.exports = function (grunt) {
 
         // A list of files, which will be syntax-checked by JSHint
         jshint: {
-            files: ['lib/jq-*.js'],
+            files: ['lib/*.js'],
             //https://github.com/gruntjs/grunt-contrib-jshint/blob/master/docs/jshint-examples.md
             options: {
                 bitwise: false,
@@ -37,7 +37,7 @@ module.exports = function (grunt) {
         // Files to be concatenated (source and destination files)
         concat: {
             js: {
-                src: ['lib/j*.js'],
+                src: ['lib/*.js'],
                 dest: 'jq-visualtimer.min.js'
             }
         },
