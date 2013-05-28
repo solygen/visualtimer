@@ -4,18 +4,12 @@ module.exports = {
                 {
                 expand: true,
                 src: ['<%= concat.js.dest %>'],
-                dest: 'bin/',
+                dest: '',
                 filter: 'isFile',
                     rename: function(dest, src) {
                         return dest + src.replace('.min.js', '.<%= pkg.version %>.min.js');
                     }
-                },
-                {
-                expand: true,
-                src: ['<%= concat.js.dest %>'],
-                dest: 'bin/',
-                filter: 'isFile'
-            }
+                }
         ]
     }
 };
