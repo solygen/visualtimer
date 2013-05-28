@@ -76,6 +76,11 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+        },
+
+        watch: {
+            files: '<%= jshint.files %>',
+            tasks: 'jshint'
         }
 
     });
@@ -85,6 +90,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-htmlmin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // This is the default task being executed if Grunt
     // is called without any further parameter.
