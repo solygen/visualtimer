@@ -2,71 +2,16 @@ module.exports = function (grunt) {
 
     'use strict';
 
+    var pkg = require("./package.json");
+
     // Initializes the Grunt tasks with the following settings
     grunt.initConfig({
 
-        pkg: grunt.file.readJSON('package.json'),
+        pkg: pkg,
 
-        // A list of files, which will be syntax-checked by JSHint
-        jshint: {
-            files: ['lib/*.js'],
-            //https://github.com/gruntjs/grunt-contrib-jshint/blob/master/docs/jshint-examples.md
-            options: {
-                bitwise: false,
-                browser: true,
-                debug: true,
-                devel: true,
-                eqeqeq: true,
-                evil: true,
-                forin: false,
-                immed: true,
-                loopfunc: false,
-                nomen: false,
-                onevar: false,
-                plusplus: false,
-                regexp: false,
-                regexdash: true,
-                shadow: true,
-                strict: true,
-                trailing: true,
-                undef: true,
-                validthis: true,
-                white: true,
-                predef: ['$']
-            }
-        },
-
-        // Files to be concatenated (source and destination files)
-        concat: {
-            js: {
-                src: ['lib/*.js'],
-                dest: '<%= pkg.name %>.min.js'
-            }
-        },
-
-        //copy files to bin (1. same name, 2. name with current version)
-        copy: {
-            main: {
-                files: [
-                        {
-                        expand: true,
-                        src: ['<%= concat.js.dest %>'],
-                        dest: 'bin/',
-                        filter: 'isFile',
-                        rename: function(dest, src) {
-                            return dest + src.replace('.min.js', '.<%= pkg.version %>.min.js')
-                        }
-                    },
-                        {
-                        expand: true,
-                        src: ['<%= concat.js.dest %>'],
-                        dest: 'bin/',
-                        filter: 'isFile'
-                    }
-                ]
-            }
-        },
-
+        jshint:  require('./grunt/config/jshint.js'),
+        concat: require('./grunt/config/concat.js'),
+        copy: require('./grunt/config/copy.js'),
         uglify: require('./grunt/config/uglify.js'),
 
         watch: {
