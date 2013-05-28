@@ -1,10 +1,15 @@
 {
-    "name": "jquery-visualtimer",
+    "name": "visualtimer",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/solygen/jquery-visual-timer"
+    },
     "version": "0.1.0",
     "devDependencies": {
         "grunt": "~0.4",
-        "grunt-contrib-jshint": "~0.1",
-        "grunt-contrib-concat": "~0.1",
-        "grunt-contrib-uglify": "~0.1"
+        "grunt-contrib-jshint": "~0.5",
+        "grunt-contrib-concat": "~0.3",
+        "grunt-contrib-uglify": "~0.2",
+        "grunt-contrib-copy": "~0.4"
     }
 }

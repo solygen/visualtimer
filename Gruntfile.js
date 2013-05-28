@@ -5,6 +5,8 @@ module.exports = function (grunt) {
     // Initializes the Grunt tasks with the following settings
     grunt.initConfig({
 
+        pkg: grunt.file.readJSON('package.json'),
+
         // A list of files, which will be syntax-checked by JSHint
         jshint: {
             files: ['lib/*.js'],
@@ -38,15 +40,41 @@ module.exports = function (grunt) {
         concat: {
             js: {
                 src: ['lib/*.js'],
-                dest: 'jq-visualtimer.min.js'
+                dest: '<%= pkg.name %>.min.js'
             }
         },
 
         //and minified (source and destination files)
         uglify: {
+            options: {
+                banner: '/* <%= pkg.name %>.<%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>) <%= pkg.repository.url %> */'
+            },
             dist: {
                 src: ['<%= concat.js.dest %>'],
-                dest: 'jq-visualtimer.min.js'
+                dest: '<%= concat.js.dest %>'
+            }
+        },
+
+        //copy files to bin (1. same name, 2. name with current version)
+        copy: {
+            main: {
+                files: [
+                        {
+                        expand: true,
+                        src: ['<%= concat.js.dest %>'],
+                        dest: 'bin/',
+                        filter: 'isFile',
+                        rename: function(dest, src) {
+                            return dest + src.replace('.min.js', '.<%= pkg.version %>.min.js')
+                        }
+                    },
+                        {
+                        expand: true,
+                        src: ['<%= concat.js.dest %>'],
+                        dest: 'bin/',
+                        filter: 'isFile'
+                    }
+                ]
             }
         }
 
@@ -56,9 +84,10 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // This is the default task being executed if Grunt
     // is called without any further parameter.
-    grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'copy']);
 
 };
