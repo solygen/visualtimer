@@ -44,17 +44,6 @@ module.exports = function (grunt) {
             }
         },
 
-        //and minified (source and destination files)
-        uglify: {
-            options: {
-                banner: '/* <%= pkg.name %>.<%= pkg.version %> (<%= grunt.template.today("yyyy-mm-dd") %>) <%= pkg.repository.url %> */'
-            },
-            dist: {
-                src: ['<%= concat.js.dest %>'],
-                dest: '<%= concat.js.dest %>'
-            }
-        },
-
         //copy files to bin (1. same name, 2. name with current version)
         copy: {
             main: {
@@ -77,6 +66,8 @@ module.exports = function (grunt) {
                 ]
             }
         },
+
+        uglify: require('./grunt/config/uglify.js'),
 
         watch: {
             files: '<%= jshint.files %>',
