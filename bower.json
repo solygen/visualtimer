@@ -7,7 +7,6 @@
         "components"
     ],
     "dependencies": {
-            "jquery": "latest",
-            "font-awesome": "latest"
+            "jquery": "~1.9"
         }
 }

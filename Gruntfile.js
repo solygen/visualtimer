@@ -15,10 +15,16 @@ module.exports = function (grunt) {
         uglify: require('./grunt/config/uglify.js'),
 
         bower: {
+            options: {
+                targetDir: 'vendors'
+            },
             install: {
                //just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
             }
         },
+
+        clean: ["./vendors"],
+
 
         watch: {
             files: '<%= jshint.files %>',
@@ -32,6 +38,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -39,6 +46,8 @@ module.exports = function (grunt) {
     // This is the default task being executed if Grunt
     // is called without any further parameter.
     grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'copy']);
-    grunt.registerTask('update', ['bower:install']);
+
+    //install latest shit with bower and copy relevant files to lib/vendors
+    grunt.registerTask('update', ['bower:install', 'copy:update', 'clean']);
 
 };
