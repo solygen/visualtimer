@@ -9,41 +9,16 @@ module.exports = function (grunt) {
 
         pkg: pkg,
 
-        jshint:  require('./grunt/config/jshint.js'),
-        concat: require('./grunt/config/concat.js'),
-        copy: require('./grunt/config/copy.js'),
-        uglify: require('./grunt/config/uglify.js'),
-
-        //currently doesn't work realiable
-        /*bower: {
-            options: {
-                targetDir: 'vendors'
-            },
-            install: {
-               //just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
-            }
-        },*/
-
+        jshint:  require('./grunt/jshint.js'),
+        concat: require('./grunt/concat.js'),
+        copy: require('./grunt/copy.js'),
+        uglify: require('./grunt/uglify.js'),
+        htmlmin: require('./grunt/htmlmin.js'),
         clean: ["./vendors"],
-
-
-        htmlmin: {
-            dist: {
-              options: {
-                removeComments: true,
-                collapseWhitespace: true
-              },
-              files: {
-                'builds/website/index.html': 'builds/website/index.html'
-              }
-            }
-        },
-
         watch: {
             files: '<%= jshint.files %>',
             tasks: 'jshint'
         }
-
     });
 
     // Load the plugins that provide the tasks we specified in package.json.
