@@ -19,13 +19,56 @@ module.exports = {
                 expand: true,
                 cwd: 'vendors/jquery/',
                 src: ['jquery.min.js'],
-                dest: 'lib/'
+                dest: 'lib/vendors/'
                 },
                 {
                 expand: true,
                 cwd: 'vendors/font-awesome/build/assets/font-awesome/css/',
                 src: ['font-awesome.min.css'],
-                dest: 'lib/'
+                dest: 'lib/vendors/'
+                },
+                {
+                expand: true,
+                cwd: 'vendors/font-awesome/build/assets/font-awesome/font/',
+                src: ['fontawesome-webfont.woff'],
+                dest: 'lib/font/'
+                },
+                {
+                expand: true,
+                cwd: 'vendors/bootstrap/docs/assets/js/',
+                src: ['bootstrap.min.js'],
+                dest: 'lib/vendors/'
+                },
+                {
+                expand: true,
+                cwd: 'vendors/bootstrap/docs/assets/css/',
+                src: ['bootstrap-responsive.css'],
+                dest: 'lib/vendors/'
+                },
+                {
+                expand: true,
+                cwd: 'vendors/bootstrap/docs/assets/css/',
+                src: ['bootstrap.css'],
+                dest: 'lib/vendors/'
+                }
+        ]
+    },
+    website: {
+        files: [
+                {
+                expand: true,
+                src: ['lib/**'],
+                dest: 'builds/website/'
+                },
+                {
+                expand: true,
+                src: ['img/*'],
+                dest: 'builds/website/'
+                },
+                {
+                expand: true,
+                src: ['*.html'],
+                dest: 'builds/website/'
                 }
         ]
     }

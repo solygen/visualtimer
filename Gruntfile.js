@@ -14,17 +14,30 @@ module.exports = function (grunt) {
         copy: require('./grunt/config/copy.js'),
         uglify: require('./grunt/config/uglify.js'),
 
-        bower: {
+        //currently doesn't work realiable
+        /*bower: {
             options: {
                 targetDir: 'vendors'
             },
             install: {
                //just run 'grunt bower:install' and you'll see files from your Bower packages in lib directory
             }
-        },
+        },*/
 
         clean: ["./vendors"],
 
+
+        htmlmin: {
+            dist: {
+              options: {
+                removeComments: true,
+                collapseWhitespace: true
+              },
+              files: {
+                'builds/website/index.html': 'builds/website/index.html'
+              }
+            }
+        },
 
         watch: {
             files: '<%= jshint.files %>',
@@ -40,14 +53,16 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    // This is the default task being executed if Grunt
+    //after installing latest shit with bower run this task to copy relevant files to lib
+    grunt.registerTask('build:libs', ['copy:update'/*, 'clean'*/]);
+
     // is called without any further parameter.
     grunt.registerTask('default', ['jshint', 'concat', 'uglify', 'copy']);
+    grunt.registerTask('build', ['jshint', 'concat', 'uglify', 'copy']);
 
-    //install latest shit with bower and copy relevant files to lib/vendors
-    grunt.registerTask('update', ['bower:install', 'copy:update', 'clean']);
+    //create build for website
+    grunt.registerTask('build:website', ['copy:website', 'htmlmin']);
 
 };
