@@ -1,19 +1,29 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-        <title>VisualTimer</title>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>VisualTimer</title>
         <meta name="description" content="">
-        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link rel="stylesheet" href="lib/vendors/bootstrap.css">
+        <link rel="stylesheet" href="lib/vendors/bootstrap-responsive.css">
+        <link rel="stylesheet" href="lib/vendors/font-awesome.min.css">
+
         <style>
-            html, body, div {
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+            div#content {
                 width: 95%;
                 min-height: 100%;
             }
-
-            div {
+            div.dot {
                 height: 80px;
                 width: 80px;
                 float: left;
@@ -22,17 +32,42 @@
                 margin: 2px;
             }
         </style>
-
-        <!-- Fav and touch icons -->
-        <link rel="shortcut icon" href="bootstrap/ico/favicon.ico">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57x57-precomposed.png">
     </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
 
-    <body></body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="#"><i class="icon-time"></i> VisualTimer</a>
+                     <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li><a href="#play"><i class="icon-play"></i> Play</a></li>
+                            <li><a href="#pause"><i class="icon-pause"></i> Pause</a></li>
+                            <li><a href="#stop"><i class="icon-reset"></i> Reset</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
 
-    <script type="text/javascript" src="lib/jquery.min.js"></script>
-    <script type="text/javascript" src="lib/visualtimer.min.js"></script>
+        <div id='content'>
+        </div>
+
+        <script type="text/javascript" src="lib/vendors/jquery.min.js"></script>
+        <script type="text/javascript" src="lib/vendors/bootstrap.min.js"></script>
+        <script type="text/javascript" src="lib/visualtimer.min.js"></script>
+
+    </body>
 </html>

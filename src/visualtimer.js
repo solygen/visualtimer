@@ -69,6 +69,7 @@ var SECOND = 1000,
              */
             dot = function (id) {
                 return $('<div>')
+                        .addClass('dot')
                         .attr('id', id)
                         .on('click', toggle)
                         .on('dblclick', reset);
@@ -81,6 +82,7 @@ var SECOND = 1000,
          * @return {object} timer
          */
         self.init = function (time, node) {
+            debugger;
             parent = node || $('body');
             time = time || MINUTE;
             interval = SECOND;
@@ -165,7 +167,8 @@ $(window).load(function () {
 
     'use strict';
 
-    var t = timer().init(10 * SECOND);
+    var t = timer().init(10 * SECOND, $(document.body).find('#content'));
+    //var t = timer().init(10 * SECOND, $('<div>'));
 
     var navigate = function () {
         if (location.hash.substr(0, 1) === '#' && location.hash.length > 1) {
