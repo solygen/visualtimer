@@ -1,6 +1,6 @@
 
 #DEMO
-[http://enjoylive.solygen.de](http://enjoylive.solygen.de)
+[http://visualtimer.solygen.de](http://visualtimer.solygen.de)
 
 #Screenshot
 ![image](img/screenshot.jpeg)
