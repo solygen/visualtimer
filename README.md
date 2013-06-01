@@ -1,6 +1,18 @@
+
+#DEMO
+[http://enjoylive.solygen.de](http://enjoylive.solygen.de)
+
+#Screenshot
+![image](img/screenshot.jpeg)
+
+
 # Folder Structure
 
-* build: contains a minified build for each version
+* build
+    * for each version of visualtimer
+    * website
 * grunt: config for grunt tasks
-* lib: contains minified visualtimer.js and related 3rd party libs
+* img: favicon images
+* lib: contains minified visualtimer.js and related 3rd party files
 * src: source files
+* vendors: used for bower shouldn't be checked in

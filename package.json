@@ -2,7 +2,7 @@
     "name": "visualtimer",
     "repository": {
         "type": "git",
-        "url": "https://github.com/solygen/jquery-visual-timer"
+        "url": "https://github.com/solygen/visualtimer"
     },
     "version": "0.1.0",
     "devDependencies": {
