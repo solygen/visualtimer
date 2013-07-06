@@ -6,9 +6,7 @@ module.exports = function (grunt) {
 
     // Initializes the Grunt tasks with the following settings
     grunt.initConfig({
-
         pkg: pkg,
-
         jshint:  require('./grunt/jshint.js'),
         concat: require('./grunt/concat.js'),
         copy: require('./grunt/copy.js'),
